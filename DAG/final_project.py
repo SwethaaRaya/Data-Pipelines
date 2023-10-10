@@ -11,11 +11,13 @@ from final_project_operators.data_quality import DataQualityOperator
 from udacity.common.final_project_sql_statements import SqlQueries
 
 default_args = {
+    'depends_on_past': False,
     'owner': 'udacity',
     'start_date': pendulum.now(),
     'retries': 3,
     'retry_delay': timedelta(minutes=5),
-    'catchup': False
+    'catchup': False,
+    'email_on_retry': False
 }
 
 @dag(
