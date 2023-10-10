@@ -22,24 +22,24 @@ Here are the s3 links for each:
 **Song data:** s3://udacity-dend/song_data
 
 ## Steps:
-Copy the data to your s3 bucket 'raya-swethaa'.
-  aws s3 cp s3://udacity-dend/log-data/ s3://raya-swethaa/log-data/ --recursive
-  aws s3 cp s3://udacity-dend/song-data/ s3://raya-swethaa/song-data/ --recursive
-  aws s3 cp s3://udacity-dend/log_json_path.json s3://raya-swethaa/
-Complete the final_project.py dag and the operqator codes required for it.
-  Configure following in Dag 
+1. Copy the data to your s3 bucket 'raya-swethaa'.
+  a. aws s3 cp s3://udacity-dend/log-data/ s3://raya-swethaa/log-data/ --recursive
+  b. aws s3 cp s3://udacity-dend/song-data/ s3://raya-swethaa/song-data/ --recursive
+  c. aws s3 cp s3://udacity-dend/log_json_path.json s3://raya-swethaa/
+2. Complete the final_project.py dag and the operqator codes required for it.
+  Configure following in Dag
     The DAG does not have dependencies on past runs
       On failure, the task are retried 3 times
       Retries happen every 5 minutes
       Catchup is turned off
       Do not email on retry
   Connect the tasks as per image shown above
- ** Stage Operator**
+4. ** Stage Operator**
   The stage operator is expected to be able to load any JSON-formatted files from S3 to Amazon Redshift. The operator creates and runs a SQL COPY statement based on the parameters provided. The operator's parameters 
   should specify where in S3 the file is loaded and what is the target table.
-** Fact and Dimension Operator**
+5. ** Fact and Dimension Operator**
   Most of the logic is within the SQL transformations, and the operator is expected to take as input a SQL statement and target database on which to run the query against. You can also define a target table that will 
   contain the results of the transformation.
- ** Data Quality Operator**
+6. ** Data Quality Operator**
   The data quality operator, which runs checks on the data itself. The operator's main functionality is to receive one or more SQL based test cases along with the expected results and execute the tests. For each test, the 
   test result and expected result need to be checked, and if there is no match, the operator should raise an exception, and the task should retry and fail eventually.
