@@ -13,7 +13,7 @@ from udacity.common.final_project_sql_statements import SqlQueries
 default_args = {
     'owner': 'udacity',
     'start_date': pendulum.now(),
-    'retries': 1,
+    'retries': 3,
     'retry_delay': timedelta(minutes=5),
     'catchup': False
 }
